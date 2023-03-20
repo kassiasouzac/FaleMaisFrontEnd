@@ -1,0 +1,17 @@
+[
+  {
+    "id": 1,
+    "nome": "FaleMais 30",
+    "minutosIncluidos": 30
+  },
+  {
+    "id": 2,
+    "nome": "FaleMais 60",
+    "minutosIncluidos": 60
+  },
+  {
+    "id": 3,
+    "nome": "FaleMais 120",
+    "minutosIncluidos": 120
+  }
+]

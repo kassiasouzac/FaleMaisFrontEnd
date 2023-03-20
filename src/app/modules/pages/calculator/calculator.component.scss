@@ -1,0 +1,68 @@
+@import '../../../../dist/scss/variables.scss';
+
+.container{
+
+  display: flex;
+  flex-direction: column;
+  width: 60%;
+  margin-bottom: 1rem;
+
+  p{
+    font-size: 1.4rem;
+    font-weight: bold;
+    color: #13161D;
+    margin-top: 4.3rem;
+  }
+
+  .card-header{
+    background: $light-indigo;
+    color: $medium-white;
+    font-weight: 400;
+    font-size: 1.3rem;
+  }
+  .card-title{
+    font-size: 1.1rem;
+    font-weight: normal;
+    color: #606268
+  }
+  .card-text{
+    margin-top: 2rem;
+  }
+
+  .card{
+    margin-bottom: 7.1rem;
+  }
+  .form-label{
+    color: $light-gray;
+    font-size: 1rem;
+  }
+
+  .result{
+    display: flex;
+    flex-direction: column;
+    margin-top: 2rem;
+    color: #75767a
+  }
+}
+.btn-container{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  margin-top: 1.6rem;
+}
+
+button{
+  background: $light-indigo;
+  color: $medium-white;
+  width: 40%;
+}
+
+.result{
+  h5{
+    color: $green
+  }
+}
+@media screen and (max-device-width:870px) {
+
+}

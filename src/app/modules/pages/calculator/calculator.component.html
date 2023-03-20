@@ -1,0 +1,82 @@
+<div class="container text-center">
+  <p>Escolha seu plano de acordo com sua necessidade:</p>
+
+</div>
+
+<div class="container">
+  <div class="title">
+
+  </div>
+  <div class="row">
+    <div class="col">
+      <div class="card w-80">
+        <div class="card-header text-center">
+          Calcule sua economia utilizando os planos FaleMais
+        </div>
+        <div class="card-body">
+          <h5 class="card-title">Selecione o DDD de origem e destino, a quantidade de minutos que você precisa para
+            falar e saiba o custo da sua ligação com os Planos FaleMais e sem plano:</h5>
+          <div class="card-text">
+
+            <form (ngSubmit)="onSubmit()" [formGroup]="formCalculo" >
+
+              <div class="row">
+
+                <div class="col-3">
+                  <label class="form-label">DDD Origem</label>
+                  <select class="form-select" formControlName="dddOrigem" required>
+                    <option value="" disabled selected hidden>000</option>
+                    <option *ngFor="let ddd of ddds">{{ ddd}}</option>
+                  </select>
+                  <span *ngIf="formCalculo.get('dddOrigem')?.errors">
+
+                  </span>
+                </div>
+
+                <div class="col-3">
+                  <label class="form-label">DDD Destino</label>
+                  <select class="form-select" formControlName="dddDestino" required>
+                    <option value="" disabled selected hidden>000</option>
+                    <option *ngFor="let ddd of ddds" >{{ ddd}}</option>
+                  </select>
+                </div>
+
+                <div class="col-2">
+                  <label class="form-label">Minutos</label>
+                  <input type="number" required class="form-control" formControlName="minutos" required >
+                </div>
+
+                <div class="col-4">
+                  <label class="form-label">Plano FaleMais</label>
+                  <select class="form-select" formControlName="planoId" required>
+                    <option value="" selected hidden>Selecione...</option>
+                    <option *ngFor="let plano of planos" ngValue="{{plano.id}}">{{ plano.nome }}</option>
+                  </select>
+                </div>
+
+              </div>
+
+              <div class="btn-container">
+                <button  (ngClick)="onSubmit()" class="btn btn-light" >Calcular</button>
+              </div>
+
+            </form>
+
+            <div class="result">
+              <div *ngIf="valorComPlano">
+                Com o plano escolhido : <h5>R$ {{valorComPlano}}0</h5>
+              </div>
+              <div *ngIf="valorComPlano === 0 && valorSemPlano > 0" >
+                Com o plano escolhido : <h5>R$ 0,00</h5>
+              </div>
+              <div *ngIf="valorSemPlano">
+                Sem plano: <h6>R$ {{valorSemPlano}},00</h6>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

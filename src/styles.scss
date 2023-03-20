@@ -1,1 +1,40 @@
-/* You can add global styles to this file, and also import other style files */
+@use '@angular/material' as mat;
+@include mat.core();
+
+@import './dist/scss/reset.scss';
+@import './dist/scss/variables.scss';
+@import '~bootstrap/dist/css/bootstrap.min.css';
+//@import './dist/scss/rem-calc.scss';
+//@import './config-scss/btn.scss';
+//@import './config-scss/animation.scss';
+
+html {
+	font-family: 'Roboto', sans-serif;
+	background: var(--primary-color);
+}
+
+main {
+	max-width: rem-calc(600);
+	box-sizing: border-box;
+	padding: 0 ;
+	margin: 0 ;
+}
+
+html, body { height: 100%; width: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+$app-primary: mat.define-palette(mat.$indigo-palette, 500, 700, A100);
+$app-accent: mat.define-palette(mat.$pink-palette, A200, A100, A400);
+$app-warn: mat.define-palette(mat.$red-palette);
+
+$custom-theme: mat.define-light-theme((
+  color: (
+    primary: $app-primary,
+    accent: $app-accent,
+    warn: $app-warn,
+  )
+));
+
+@include mat.all-component-themes($custom-theme);
+
+

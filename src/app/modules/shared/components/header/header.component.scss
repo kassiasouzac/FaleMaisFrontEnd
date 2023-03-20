@@ -1,0 +1,34 @@
+@import '../../../../../dist/scss/variables.scss';
+
+:host{
+  header{
+    width: 100%;
+    background: $indigo;
+    overflow: auto;
+
+
+    nav{
+      background-color: $indigo;
+
+    }
+
+      img{
+        height: 50px ;
+        width: 150px;
+      }
+
+    a{
+      float: right;
+      margin-top: 12px;
+      padding: 15px;
+      color: $medium-white;
+      text-decoration: none;
+      font-size: 18px;
+      cursor: pointer;
+    }
+
+    a:hover{
+      color: $orange;
+    }
+  }
+}
