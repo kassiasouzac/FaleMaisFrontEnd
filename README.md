@@ -6,7 +6,7 @@ Projeto criado para solucionar desafio proposto.
 
 **Para um bom funcionamento, garanta que a API FaleMais já está sendo executada**
 
-No terminal, execute o comando abaixo:
+No terminal navegue até a pasta principal do projeto e execute o comando abaixo:
 ```
 ng serve
 
