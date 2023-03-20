@@ -8,6 +8,12 @@ Projeto criado para solucionar desafio proposto.
 
 No terminal navegue até a pasta principal do projeto e execute o comando abaixo:
 ```
+npm install
+
+```
+E depois:
+
+```
 ng serve
 
 ```
