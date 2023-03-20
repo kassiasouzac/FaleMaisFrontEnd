@@ -6,7 +6,7 @@ import { SharedModule } from '../shared/shared.module';
 import { CalculatorComponent } from '../pages/calculator/calculator.component';
 import { HomeComponent } from './home/home.component';
 import { FormsModule, ReactiveFormsModule} from '@angular/forms';
-
+import { ToastModule } from '@coreui/angular';
 
 @NgModule({
   declarations: [
@@ -19,7 +19,8 @@ import { FormsModule, ReactiveFormsModule} from '@angular/forms';
     RoutingModule,
     HttpClientModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    ToastModule
   ],
   exports:[
     CalculatorComponent

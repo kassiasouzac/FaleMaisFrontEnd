@@ -4,15 +4,11 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-
+import { ToastModule } from '@coreui/angular';
 import { HttpClientModule } from '@angular/common/http';
 
 //Modules
 import { PagesModule } from './modules/pages/pages.module';
-
-
-
-
 
 
 @NgModule({
@@ -26,7 +22,8 @@ import { PagesModule } from './modules/pages/pages.module';
     BrowserAnimationsModule,
     HttpClientModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    ToastModule
   ],
   providers: [],
   bootstrap: [AppComponent]

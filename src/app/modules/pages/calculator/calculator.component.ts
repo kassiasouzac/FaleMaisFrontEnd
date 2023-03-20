@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { APIService  } from 'src/app/modules/service/api.service';
 import { ICalculo, IDDD, IForm, IPlano } from 'src/app/modules/interface/IFaleMaisAPI';
 import { FormBuilder,FormGroup, Validators } from '@angular/forms';
-import { catchError } from 'rxjs';
 
 @Component({
   selector: 'app-calculator',
@@ -16,6 +15,7 @@ export class CalculatorComponent  implements OnInit{
   calculos: ICalculo[] = []
   valorComPlano: number = 0;
   valorSemPlano: number = 0;
+  error: string = "";
 
   public formCalculo: FormGroup = this.formBuilder.group({
     dddOrigem: ['', Validators.required],
@@ -23,6 +23,7 @@ export class CalculatorComponent  implements OnInit{
     minutos: [null, [Validators.required, Validators.minLength(1)]],
     planoId:[null, Validators.required]
   })
+
 
   constructor(private apiService: APIService, private formBuilder: FormBuilder) {}
 
@@ -42,24 +43,26 @@ export class CalculatorComponent  implements OnInit{
         this.ddds = data;
       })
    }
-
+  optionChange(): boolean{
+    if(this.formCalculo.value.dddOrigem === '011'){
+      return false
+    }
+    return true;
+}
     onSubmit()
     {
-      if(this.formCalculo.valid){
+        if(this.formCalculo.valid){
 
-
-        var form : IForm = {
-          dddOrigem: this.formCalculo.value.dddOrigem,
-          dddDestino: this.formCalculo.value.dddDestino,
-          minutos: this.formCalculo.value.minutos,
-          planoId: this.formCalculo.value.planoId
-        }
-
-        this.apiService.submitCalc(form).subscribe(data =>{
-          this.valorComPlano = data.valorComPlano;
-          this.valorSemPlano = data.valorSemPlano;
-        });
-
-    }
-  }
-  }
+          var form : IForm = {
+            dddOrigem: this.formCalculo.value.dddOrigem,
+            dddDestino: this.formCalculo.value.dddDestino,
+            minutos: this.formCalculo.value.minutos,
+            planoId: this.formCalculo.value.planoId
+          }
+            this.apiService.submitCalc(form).subscribe(data =>{
+              this.valorComPlano = data.valorComPlano;
+              this.valorSemPlano = data.valorSemPlano;
+            });
+      }
+}
+}

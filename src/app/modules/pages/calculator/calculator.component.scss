@@ -4,9 +4,9 @@
 
   display: flex;
   flex-direction: column;
-  width: 60%;
+  width: 100%;
   margin-bottom: 1rem;
-
+  align-items: center;
   p{
     font-size: 1.4rem;
     font-weight: bold;
@@ -27,6 +27,7 @@
   }
   .card-text{
     margin-top: 2rem;
+
   }
 
   .card{
@@ -51,11 +52,26 @@
   width: 100%;
   margin-top: 1.6rem;
 }
+.row{
+  width: 70%;
+}
+.lin{
+  width: 100%;
+}
+
 
 button{
   background: $light-indigo;
   color: $medium-white;
   width: 40%;
+}
+button:disabled{
+  background: #d4d5da;
+  color: #7d7e81;
+}
+.alert{
+  width: 40%;
+  margin-left: 25%;
 }
 
 .result{
@@ -63,6 +79,51 @@ button{
     color: $green
   }
 }
-@media screen and (max-device-width:870px) {
+@media screen and (max-width:467px){
+  .container p{
+      font-size: 1.0rem;
+      font-weight: bold;
+      color: #13161D;
+      margin-top: 4.3rem;
+
+  }
+  .container .card-header{
+    background: $light-indigo;
+    color: $medium-white;
+    font-weight: 400;
+    font-size: 1.0rem;
+  }
+  .container  .card-title{
+    font-size: 0.9rem;
+    font-weight: normal;
+    color: #606268
+  }
+  .container .lin{
+    .form-select{
+      width: 130px;
+    }
+    .form-control{
+      width: 130px;
+    }
+  }
+
+}
+
+@media screen and (max-width:1000px){
+
+  .container .lin{
+    display: flex;
+    flex-direction: column;
+    .form-label{
+    margin-top: 5px;
+    font-size: 14px;
+    }
+    .form-select{
+      width: 160px;
+    }
+    .form-control{
+      width: 160px;
+    }
+  }
 
 }

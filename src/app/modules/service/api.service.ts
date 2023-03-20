@@ -41,11 +41,13 @@ export class APIService {
 
     submitCalc(form: IForm): Observable<ICalculo>
     {
+
         return this.httpClient.post<ICalculo>(`${API_PATH}`+this.API,
-          form, httpOptions).pipe(
-          map((res => res)),
-         catchError(this.handleError)
-        )
+        form, httpOptions).pipe(
+        map((res => res)),
+       catchError(this.handleError)
+      )
+
     }
 
     handleError(error: HttpErrorResponse) {
@@ -58,7 +60,7 @@ export class APIService {
         errorMessage = `Código do erro: ${error.status}, ` + `menssagem: ${error.message}`;
       }
       console.log(errorMessage);
-      return throwError(errorMessage);
+      return throwError(() => new Error(errorMessage));
     };
 
 }

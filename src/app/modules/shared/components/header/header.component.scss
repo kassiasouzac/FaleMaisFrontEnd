@@ -9,10 +9,9 @@
 
     nav{
       background-color: $indigo;
+   }
 
-    }
-
-      img{
+    img{
         height: 50px ;
         width: 150px;
       }
@@ -31,4 +30,23 @@
       color: $orange;
     }
   }
+
+  @media screen and (max-width:467px){
+    header{
+      nav{
+        img{
+          height: 30px ;
+        width: 130px;
+        }
+        a{
+          padding: 5px;
+          font-size: 14px;
+          margin-top: 20px;
+        }
+      }
+    }
+  }
 }
+
+
+

@@ -1,3 +1,4 @@
+
 <div class="container text-center">
   <p>Escolha seu plano de acordo com sua necessidade:</p>
 
@@ -7,37 +8,45 @@
   <div class="title">
 
   </div>
-  <div class="row">
+  <div class="row justify-content-center">
     <div class="col">
-      <div class="card w-80">
+      <div class="card text-center w-80">
         <div class="card-header text-center">
           Calcule sua economia utilizando os planos FaleMais
         </div>
         <div class="card-body">
           <h5 class="card-title">Selecione o DDD de origem e destino, a quantidade de minutos que você precisa para
             falar e saiba o custo da sua ligação com os Planos FaleMais e sem plano:</h5>
-          <div class="card-text">
+          <div class="card-text ">
 
             <form (ngSubmit)="onSubmit()" [formGroup]="formCalculo" >
 
-              <div class="row">
+              <div class="row lin">
 
                 <div class="col-3">
                   <label class="form-label">DDD Origem</label>
-                  <select class="form-select" formControlName="dddOrigem" required>
+                  <select class="form-select" id="dddsOrigem" name="dddsOrigem" formControlName="dddOrigem" required>
                     <option value="" disabled selected hidden>000</option>
-                    <option *ngFor="let ddd of ddds">{{ ddd}}</option>
+                    <option *ngFor="let ddd of ddds" ngValue="{{ddd}}">{{ ddd}}</option>
                   </select>
-                  <span *ngIf="formCalculo.get('dddOrigem')?.errors">
 
-                  </span>
                 </div>
 
-                <div class="col-3">
+                <div class="col-3" >
                   <label class="form-label">DDD Destino</label>
-                  <select class="form-select" formControlName="dddDestino" required>
+
+                  <select  class="form-select" id="dddsDestino" name="dddsDestino" formControlName="dddDestino" >
+                    <ng-template [ngIf]="formCalculo.value.dddOrigem === '011'" [ngIfElse]="dddUnico">
                     <option value="" disabled selected hidden>000</option>
-                    <option *ngFor="let ddd of ddds" >{{ ddd}}</option>
+                    <option ngValue="016" >016</option>
+                    <option ngValue="017" >017</option>
+                    <option ngValue="018" >018</option>
+                 </ng-template>
+
+                    <ng-template #dddUnico>
+                        <option value="" disabled selected hidden>000</option>
+                        <option ngValue="011" >011</option>
+                    </ng-template>
                   </select>
                 </div>
 
@@ -49,7 +58,7 @@
                 <div class="col-4">
                   <label class="form-label">Plano FaleMais</label>
                   <select class="form-select" formControlName="planoId" required>
-                    <option value="" selected hidden>Selecione...</option>
+                    <option value="" selected hidden disabled >Selecione...</option>
                     <option *ngFor="let plano of planos" ngValue="{{plano.id}}">{{ plano.nome }}</option>
                   </select>
                 </div>
@@ -57,7 +66,7 @@
               </div>
 
               <div class="btn-container">
-                <button  (ngClick)="onSubmit()" class="btn btn-light" >Calcular</button>
+                <button [disabled]="formCalculo.invalid"  class="btn" >Calcular</button>
               </div>
 
             </form>
@@ -76,7 +85,59 @@
           </div>
 
         </div>
+
       </div>
+
     </div>
+
   </div>
+  <span *ngIf="formCalculo.get('dddOrigem')?.errors && (formCalculo.get('dddOrigem')?.touched || formCalculo.get('dddOrigem')?.dirty)">
+    <c-toaster placement="top-end" position="absolute">
+      <c-toast [visible]="true" [autohide]="true" color="danger" class="align-items-center text-white border-0">
+        <c-toast-header>
+          Preenchimento Obrigatório
+        </c-toast-header>
+        <c-toast-body>
+         Selecione um DDD de origem!
+        </c-toast-body>
+      </c-toast>
+    </c-toaster>
+    </span>
+    <span *ngIf="formCalculo.get('dddDestino')?.errors && (formCalculo.get('dddDestino')?.touched || formCalculo.get('dddDestino')?.dirty)">
+      <c-toaster placement="top-end" position="absolute">
+        <c-toast [visible]="true" [autohide]="true" color="danger" class="align-items-center text-white border-0">
+          <c-toast-header>
+            Preenchimento Obrigatório
+          </c-toast-header>
+          <c-toast-body>
+            Selecione um DDD de destino!
+          </c-toast-body>
+        </c-toast>
+      </c-toaster>
+    </span>
+  <span *ngIf="formCalculo.get('minutos')?.errors && (formCalculo.get('minutos')?.touched || formCalculo.get('minutos')?.dirty)">
+    <c-toaster placement="top-end" position="absolute">
+    <c-toast [visible]="true" [autohide]="true" color="danger" class="align-items-center text-white border-0">
+      <c-toast-header>
+        Preenchimento Obrigatório
+      </c-toast-header>
+      <c-toast-body>
+        O campo de minutos é de preenchimento obrigatório, somente com números
+      </c-toast-body>
+    </c-toast>
+  </c-toaster>
+  </span>
+  <span *ngIf="formCalculo.get('planoId')?.errors && (formCalculo.get('planoId')?.touched || formCalculo.get('planoId')?.dirty)">
+    <c-toaster placement="top-end" position="absolute">
+      <c-toast [visible]="true" [autohide]="true" color="danger" class="align-items-center text-white border-0">
+        <c-toast-header>
+          Preenchimento Obrigatório
+        </c-toast-header>
+        <c-toast-body>
+          Selecione um plano!
+        </c-toast-body>
+      </c-toast>
+    </c-toaster>
+  </span>
 </div>
+
